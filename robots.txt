@@ -1,0 +1,2 @@
+Sitemap: https://macvim.org/sitemap.txt
+Sitemap: https://macvim.org/docs/sitemap.txt
