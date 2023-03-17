@@ -1,0 +1,8 @@
+.bundle
+_site
+vendor
+
+# Do not version control Gemfile.lock for now. These are only for small local
+# testing only so we don't really need to lock down on versioning which would
+# add noise to history.
+Gemfile.lock
