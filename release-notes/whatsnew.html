@@ -1,0 +1,130 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="List of recent MacVim release notes to show what's new.">
+    <title>What's New in MacVim</title>
+
+    <!--
+    This page serves as a list of recent release notes. By default all but the
+    latest release is hidden by the caller can use URL parameters to enable
+    them. This is mostly for use in MacVim's internal What's New page.
+
+    Use ?from=<rev_exclusive>&to=<rev> to list a range of releases.
+    Use ?version=<rev> to list a single release from its revision number.
+    -->
+
+    <style>
+    :root { supported-color-schemes: light dark; color-scheme: light dark; }
+
+    /* Use the same colors as Sparkle updater to make them look consistent */
+    @media (prefers-color-scheme: dark) {
+      html {
+          color: white;
+          background: transparent;
+      }
+      :link {
+          color: #419CFF;
+      }
+      :link:active {
+          color: #FF1919;
+      }
+    }
+
+    /* Use system native fonts if browser supports it */
+    body {
+      font-family: -apple-system-font, -apple-system, sans-serif;
+      font: -apple-system-body !important;
+    }
+
+    hr {
+      border-bottom: 5px solid #57c4d0; 
+    }
+
+    section > header {
+      font-size: 130%;
+      color: #599A42;
+      border-bottom: 3px solid #57c4d0;
+    }
+    @media (prefers-color-scheme: dark) {
+      section > header {
+        color: rgb(48,209,88);
+      }
+    }
+
+    section > h1 {
+      padding-bottom: .3em;
+      font-size: 1.9em;
+      border-bottom: 1px solid gray;
+    }
+
+    section > h2 {
+      font-size: 1.5em;
+    }
+
+    section {
+      display: none;
+    }
+    section.item-0 {
+      display: block;
+    }
+
+    </style>
+  </head>
+  <body>
+    {% for release in site.data.releases %}
+
+      {% comment %}
+      We try to show more than 1 releases in case the user is doing a multiple
+      version upgrade. That said, just include 4 releases for now. There really
+      isn't a practical need to show too many.
+      {% endcomment %}
+      {% if forloop.index0 >= 4 %}
+        {% break %}
+      {% endif %}
+
+      <section id={{ release }} class=item-{{ forloop.index0 }}>
+        <header> <h1>MacVim r{{ release }}</h1></header>
+        {% include releases/r{{ release }}.html %}
+      </section>
+
+    {% endfor %}
+
+    <p><br /><a href="https://github.com/macvim-dev/macvim/releases/">Latest release notes &gt;</a></p>
+
+    <script>
+      const params = new URLSearchParams(document.location.search);
+
+      let fromRev = NaN;
+      let toRev = NaN;
+      if (params.has('from') && params.has('to')) {
+        fromRev = parseInt(params.get('from'));
+        toRev = parseInt(params.get('to'));
+      }
+      else if (params.has('version')) {
+        toRev = parseInt(params.get('version'));
+        fromRev = toRev - 1;
+      }
+      if (!isNaN(fromRev) && !isNaN(toRev)) {
+        let foundOne = false;
+        let sections = document.getElementsByTagName('section');
+        for (let i = 0; i < sections.length; i++) {
+          const secRev = parseInt(sections[i].id);
+          if (!isNaN(secRev)) {
+            if (secRev <= fromRev || secRev > toRev)
+              sections[i].style.display = 'none';
+            else {
+              sections[i].style.display = 'block';
+              foundOne = true;
+            }
+          }
+        }
+        if (!foundOne) {
+          sections[0].style.display = 'block'; // Just show the latest if the input range is not valid so we don't show an empty page
+        }
+      }
+    </script>
+  </body>
+</html>
