@@ -2,56 +2,9 @@
       <sparkle:channel>prerelease</sparkle:channel>
       <title>MacVim prerelease-176.1</title>
       <description><![CDATA[
-<style>
-:root { supported-color-schemes: light dark; color-scheme: light dark; }
-</style>
-<p>MacVim r176.1 (prerelease)</p>
-
-<p>Updated to Vim 9.0.1403</p>
-
-<ul>
-  <li>Printing files in macOS 13 Ventura is now fixed.</li>
-</ul>
-
-<p><small>This is a pre-release version of MacVim. To use the latest stable release, see <a href="https://github.com/macvim-dev/macvim/releases/latest">https://github.com/macvim-dev/macvim/releases/latest</a></small></p>
-
-<details>
-  <summary>What’s Changed</summary>
-
-  <h2 id="whats-changed">What’s Changed</h2>
-  <ul>
-    <li>Remove Sparkle 2’s XPCServices symlink by @ychin in <a href="https://github.com/macvim-dev/macvim/pull/1367">#1367</a></li>
-    <li>Update gui_mac.txt headings by @dkav in <a href="https://github.com/macvim-dev/macvim/pull/1363">#1363</a></li>
-    <li>Don’t throw Objective C exception when quitting MacVim by @ychin in <a href="https://github.com/macvim-dev/macvim/pull/1371">#1371</a></li>
-    <li>Fix Xcode 8 build breaks by @ychin in <a href="https://github.com/macvim-dev/macvim/pull/1372">#1372</a></li>
-    <li>Remove Sparkle.framework when configured with –disable-sparkle by @ychin in <a href="https://github.com/macvim-dev/macvim/pull/1373">#1373</a></li>
-    <li>Remove Homebrew no-auto-update env var from CI by @ychin in <a href="https://github.com/macvim-dev/macvim/pull/1374">#1374</a></li>
-    <li>Fix upstream merge CI failure with ‘winaltkeys’ by @ychin in <a href="https://github.com/macvim-dev/macvim/pull/1376">#1376</a></li>
-    <li>Clean up syntax / formatting / typos in MacVim docs by @ychin in <a href="https://github.com/macvim-dev/macvim/pull/1375">#1375</a></li>
-    <li>Add security policy file / documentation by @ychin in <a href="https://github.com/macvim-dev/macvim/pull/1377">#1377</a></li>
-    <li>Fix <code>set fullscreen</code> not working after upstream Vim merge by @ychin in <a href="https://github.com/macvim-dev/macvim/pull/1379">#1379</a></li>
-    <li>Fix MacVim localized intro text, and don’t hide the <code>:h version9</code> prompt by @ychin in <a href="https://github.com/macvim-dev/macvim/pull/1381">#1381</a></li>
-    <li>Fix ‘gdefault’ etc help tags being broken by @ychin in <a href="https://github.com/macvim-dev/macvim/pull/1383">#1383</a></li>
-    <li>Improve login shell docs by @ychin in <a href="https://github.com/macvim-dev/macvim/pull/1386">#1386</a></li>
-    <li>Fix CI not handling Xcode version correctly with packages by @ychin in <a href="https://github.com/macvim-dev/macvim/pull/1387">#1387</a></li>
-    <li>Fix qlstephen project warnings by @ychin in <a href="https://github.com/macvim-dev/macvim/pull/1388">#1388</a></li>
-    <li>Fix MacVim CI breakage in Test_mouse_shape_after_cancelling_gr by @ychin in <a href="https://github.com/macvim-dev/macvim/pull/1392">#1392</a></li>
-    <li>Fix misc MacVim project warnings in Xcode by @ychin in <a href="https://github.com/macvim-dev/macvim/pull/1391">#1391</a></li>
-    <li>Fix :hardcopy not working in macOS 13 Ventura by @ychin in <a href="https://github.com/macvim-dev/macvim/pull/1390">#1390</a></li>
-    <li>About MacVim show “pre-release” when running a pre-release build by @ychin in <a href="https://github.com/macvim-dev/macvim/pull/1393">#1393</a></li>
-  </ul>
-
-  <h2 id="new-contributors">New Contributors</h2>
-  <ul>
-    <li>@dkav made their first contribution in <a href="https://github.com/macvim-dev/macvim/pull/1363">#1363</a></li>
-  </ul>
-
-  <p><strong>Full Changelog</strong>: https://github.com/macvim-dev/macvim/compare/release-176…prerelease-176.1</p>
-
-</details>
-
-<p><br /><small>Read the latest release notes <a href="https://github.com/macvim-dev/macvim/releases">here</a>.</small></p>
-
+{% include_relative _appcast_style.css %}
+{% include releases/r176.1.html %}
+<p><br /><small><a href="https://github.com/macvim-dev/macvim/releases/">Latest release notes &gt;</a></small></p>
       ]]></description>
       <sparkle:fullReleaseNotesLink>https://github.com/macvim-dev/macvim/releases</sparkle:fullReleaseNotesLink>
       <pubDate>Sun, 19 Mar 2023 20:00:00 +0000</pubDate>

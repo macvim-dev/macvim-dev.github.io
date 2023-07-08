@@ -1,0 +1,36 @@
+<p>Vim patch 8.2.1456</p>
+
+<p>Features</p>
+
+<ul>
+  <li>New “Appearance” option pane (accessible via “⌘,” or MacVim → Preferences) to allow customizing how MacVim looks. Users can now select how MacVim works with Dark Mode, and configure titlebar to be hidden or transparent. <a href="https://github.com/macvim-dev/macvim/issues/912">#912</a> <a href="https://github.com/macvim-dev/macvim/issues/1038">#1038</a> <a href="https://github.com/macvim-dev/macvim/issues/1056">#1056</a>
+<img width="450" alt="appearance screenshot" src="https://user-images.githubusercontent.com/1217449/90110322-e1ba2500-dd01-11ea-8032-007040c94fe5.png" /></li>
+  <li>MacVim localization support. It now uses translated Vim messages for the specified locale. See <code>:help multilang-messages</code> to see how to configure it. <a href="https://github.com/macvim-dev/macvim/issues/991">#991</a>
+<img width="450" alt="localization screenshot" src="https://user-images.githubusercontent.com/1217449/90110395-ff878a00-dd01-11ea-8207-a8c6b250c4dd.png" /></li>
+</ul>
+
+<p>General:</p>
+
+<ul>
+  <li>Python is now built against 3.8, up from 3.7. <a href="https://github.com/macvim-dev/macvim/issues/1012">#1012</a></li>
+</ul>
+
+<p>Fixes:</p>
+
+<ul>
+  <li>Fix mvim:// protocol handler behavior. Reverts behavior back to old behavior (before snapshot-162), but add new fallback handling to try to handle poorly formed URLs that don’t double-encode special characters. See <code>:help macvim://</code>. <a href="https://github.com/macvim-dev/macvim/issues/1055">#1055</a></li>
+  <li>Can now change tabs using menu and keyboard shortcuts (⌘{ / ⌘} / ⌘T) when in terminal mode. <a href="https://github.com/macvim-dev/macvim/issues/1045">#1045</a></li>
+  <li>Fix crash during MacVim launch in Snapshot 164 (8.2.1424) due to dynamic library linkage. <a href="https://github.com/macvim-dev/macvim/issues/1073">#1073</a></li>
+</ul>
+
+<p>Targets macOS 10.9+</p>
+
+<p>Script interfaces have compatibility with these versions:</p>
+
+<ul>
+<li>Lua 5.3</li>
+<li>Perl 5.18</li>
+<li>Python2 2.7</li>
+<li>Python3 3.8</li>
+<li>Ruby 2.7</li>
+</ul>
