@@ -20,8 +20,6 @@
           sparkle:deltaFrom="176"
           sparkle:edSignature="MbGdaSLuvbgRd8Lb1V5H8cYu7/knNCM/ZyCFeEXe73s6Hmw4A+xF3v3Z/kWldlSJoDvSINJn1f4VsYA+MjVDCg==" length="1729886"
           />
-      </sparkle:deltas>
-      <sparkle:deltas>
         <enclosure type="application/octet-stream"
           url="https://github.com/macvim-dev/macvim/releases/download/release-177/176.1_to_177.delta"
           sparkle:deltaFrom="176.1"
