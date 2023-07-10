@@ -1,17 +1,32 @@
     <item>
-      <title>MacVim release-176</title>
+      <title>MacVim release-177</title>
       <description><![CDATA[
 {% include_relative _appcast_style.css %}
-{% include releases/r176.html %}
+{% include releases/r177.html %}
 <p><br /><small><a href="https://github.com/macvim-dev/macvim/releases/latest">Latest release notes &gt;</a></small></p>
       ]]></description>
       <sparkle:fullReleaseNotesLink>https://github.com/macvim-dev/macvim/releases</sparkle:fullReleaseNotesLink>
-      <pubDate>Tue, 07 Feb 2023 04:00:00 -0800</pubDate>
+      <pubDate>Mon, 10 Jul 2023 01:00:00 +0000</pubDate>
       <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
-      <sparkle:version>176</sparkle:version>
-      <sparkle:shortVersionString>9.0.1276 (r176)</sparkle:shortVersionString>
+      <sparkle:version>177</sparkle:version>
+      <sparkle:shortVersionString>9.0.1677</sparkle:shortVersionString>
       <enclosure type="application/octet-stream"
-        url="https://github.com/macvim-dev/macvim/releases/download/release-176/MacVim.dmg"
-        sparkle:edSignature="JPtefCp4HbL4naub/hokRYPldWuAtaC0d8/IANaauy+z2dimph8cJ1a+b4jLEU22xpDRX/NzqYNGrP0CvA3yAw==" length="25057803"
+        url="https://github.com/macvim-dev/macvim/releases/download/release-177/MacVim.dmg"
+        sparkle:edSignature="/JcNqohmd5TT8h3Y8kcKvZQ5xd8afMg9qPmNQeoL8m6Lvl+5KwXYT5Exoa0pOTwKlNon+SdQYkf/vlTnw8prAg==" length="20695588"
         />
+      <sparkle:deltas>
+        <enclosure type="application/octet-stream"
+          url="https://github.com/macvim-dev/macvim/releases/download/release-177/176_to_177.delta"
+          sparkle:deltaFrom="176"
+          sparkle:edSignature="MbGdaSLuvbgRd8Lb1V5H8cYu7/knNCM/ZyCFeEXe73s6Hmw4A+xF3v3Z/kWldlSJoDvSINJn1f4VsYA+MjVDCg==" length="1729886"
+          />
+      </sparkle:deltas>
+      <sparkle:deltas>
+        <enclosure type="application/octet-stream"
+          url="https://github.com/macvim-dev/macvim/releases/download/release-177/176.1_to_177.delta"
+          sparkle:deltaFrom="176.1"
+          sparkle:edSignature="Rdea9N252CDJuuHEvWW0tzb8JOvSDeGIHX92Pwl+moXYuauJNE5ZbHcA47mLd9nPM9du3m3kFkCvTQde3uufCg==" length="1550242"
+          />
+      </sparkle:deltas>
+
     </item>
