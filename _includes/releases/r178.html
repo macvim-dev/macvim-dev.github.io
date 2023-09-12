@@ -1,0 +1,62 @@
+<p>Updated to Vim 9.0.1897</p>
+
+<h1 id="special-notes">Special Notes</h1>
+
+<p>As some of you may have read, Bram Moolenaar, the creator of Vim, has <a href="https://groups.google.com/g/vim_announce/c/tWahca9zkt4">passed away</a> recently. He has worked tirelessly on Vim for more than 30 years and this release is dedicated to him. If you would like, you could pay your respects at <a href="https://github.com/vim/vim/discussions/12737">this discussion thread</a>.</p>
+
+<p>The Vim project has transitioned to new maintainers, and MacVim will continue to be supported as long as Vim is around.</p>
+
+<h1 id="features">Features</h1>
+
+<h2 id="more-flexible-python-integration">More flexible Python integration</h2>
+
+<p>MacVim now allows you to use Python runtime (via <code>pythonthreedll</code>, used for Python plugins) of any version at or above 3.9. Previously you had to use the exact same version that was used to build MacVim (Python 3.11). The Python detection logic is also updated to always just find the latest version of Homebrew Python instead of a fixed one, and it will also now locate the default macOS / Xcode Python provided by the Xcode Command Line Tools if that is the only Python available. This should hopefully make configuring Python for MacVim a lot more seamless.  See <a href="https://macvim.org/docs/redirect.html?tag=python3-stable-abi"><code>:h python3-stable-abi</code></a>. Vim <a href="https://github.com/vim/vim/commit/c13b3d1350b60b94fe87f0761ea31c0e7fb6ebf3">v9.0.1776</a> / <a href="https://github.com/macvim-dev/macvim/issues/1428">#1428</a>.</p>
+
+<h2 id="new-vim-features">New Vim features</h2>
+
+<ul>
+  <li>New built-in support for <a href="https://editorconfig.org/">EditorConfig</a> via an optional package. Use <code>packadd editorconfig</code> to activate it. See <a href="https://github.com/vim/vim/issues/12902">vim/vim#12902</a>.</li>
+  <li><code>g&lt;End&gt;</code> now goes to the first non-blank char. <a href="https://github.com/vim/vim/commit/b5f6fe9ca2661d06bc0be839447ce1995450b9de">v9.0.1753</a></li>
+  <li>API changes
+    <ul>
+      <li><code>undotree()</code> now takes a bufnr <a href="https://github.com/vim/vim/commit/5fee11114975b7405b7ccd3ee8758e54bf559760">v9.0.1686</a></li>
+      <li><code>printf()</code> now takes positional arguments <a href="https://github.com/vim/vim/commit/0c6181fec4c362eb9682d5af583341eb20cb1af5">v9.0.1704</a></li>
+      <li><code>virtcol()</code> now takes winid <a href="https://github.com/vim/vim/commit/825cf813fa0fddf085fcbd3194781e875320ff63">v9.0.1728</a></li>
+      <li>quickfix items can now have user data <a href="https://github.com/vim/vim/commit/ca6ac99077d2e6d020a34267aa5e0fbc4d23dc38">v9.0.1688</a></li>
+    </ul>
+  </li>
+  <li>Miscellaneous security fixes.</li>
+</ul>
+
+<h1 id="security-fixes">Security Fixes</h1>
+
+<ul>
+    <li>Fixed insecure usages of interprocess communication in MacVim (<a href="https://github.com/macvim-dev/macvim/security/advisories/GHSA-9jgj-jfwg-99fv">CVE-2023-41036</a>)</li>
+</ul>
+
+<h1 id="fixes">Fixes</h1>
+
+<ul>
+  <li>Fixed MacVim to correctly set up the runtime folder in the app bundle.  As a corollary, <code>xxd</code> is now bundled with MacVim like most other Vim distributions, and MacVim.app now provides man page for the CLI vim commands if the user wants to associate man pages with the <code>mvim</code> comamnd (see <a href="https://macvim.org/docs/redirect.html?tag=macvim-PATH"><code>:h macvim-PATH</code></a>). <a href="https://github.com/macvim-dev/macvim/issues/1430">#1430</a></li>
+  <li>Fixed Vim occasionally crashing and/or hung when autocmd calls <code>serverlist()</code> on exit. <a href="https://github.com/macvim-dev/macvim/issues/1427">#1427</a></li>
+</ul>
+
+<h1 id="scripting">Scripting</h1>
+
+<ul>
+  <li>Scripting languages versions: Python now supports 3.9 or above.</li>
+</ul>
+
+<h1 id="compatibility">Compatibility</h1>
+
+<p>Requires macOS 10.9 or above. (10.9 - 10.12 requires downloading a separate legacy build)</p>
+
+<p>Script interfaces have compatibility with these versions:</p>
+
+<ul>
+  <li>Lua 5.4</li>
+  <li>Perl 5.30</li>
+  <li>Python2 2.7</li>
+  <li>Python3 3.9 or above</li>
+  <li>Ruby 3.2</li>
+</ul>
