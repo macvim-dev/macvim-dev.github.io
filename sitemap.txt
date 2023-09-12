@@ -1,1 +1,2 @@
 https://macvim.org/
+https://macvim.org/release-notes/whatsnew.html
