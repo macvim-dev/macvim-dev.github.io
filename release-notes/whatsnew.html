@@ -74,7 +74,14 @@
     </style>
   </head>
   <body>
-    {% for release in site.data.releases %}
+    {% for release in site.data.releases.prereleases %}
+      <section id={{ release }}>
+        <header> <h1>MacVim r{{ release }} (prerelease)</h1></header>
+        {% include releases/r{{ release }}.html %}
+      </section>
+    {% endfor %}
+
+    {% for release in site.data.releases.releases %}
 
       {% comment %}
       We try to show more than 1 releases in case the user is doing a multiple
@@ -100,18 +107,18 @@
       let fromRev = NaN;
       let toRev = NaN;
       if (params.has('from') && params.has('to')) {
-        fromRev = parseInt(params.get('from'));
-        toRev = parseInt(params.get('to'));
+        fromRev = parseFloat(params.get('from'));
+        toRev = parseFloat(params.get('to'));
       }
       else if (params.has('version')) {
-        toRev = parseInt(params.get('version'));
+        toRev = parseFloat(params.get('version'));
         fromRev = toRev - 1;
       }
       if (!isNaN(fromRev) && !isNaN(toRev)) {
         let foundOne = false;
         let sections = document.getElementsByTagName('section');
         for (let i = 0; i < sections.length; i++) {
-          const secRev = parseInt(sections[i].id);
+          const secRev = parseFloat(sections[i].id);
           if (!isNaN(secRev)) {
             if (secRev <= fromRev || secRev > toRev)
               sections[i].style.display = 'none';
@@ -122,7 +129,7 @@
           }
         }
         if (!foundOne) {
-          sections[0].style.display = 'block'; // Just show the latest if the input range is not valid so we don't show an empty page
+          document.getElementsByClassName('item-0')[0].style.display = 'block'; // Just show the latest if the input range is not valid so we don't show an empty page
         }
       }
     </script>
