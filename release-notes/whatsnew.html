@@ -12,7 +12,7 @@
     latest release is hidden by the caller can use URL parameters to enable
     them. This is mostly for use in MacVim's internal What's New page.
 
-    Use ?from=<rev_exclusive>&to=<rev> to list a range of releases.
+    Use ?from=<rev_exclusive>&to=<rev_inclusive> to list a range of releases.
     Use ?version=<rev> to list a single release from its revision number.
     -->
 
@@ -112,7 +112,7 @@
       }
       else if (params.has('version')) {
         toRev = parseFloat(params.get('version'));
-        fromRev = toRev - 1;
+        fromRev = Math.floor(toRev) - 0.01; // Show the main release along with all the pre-release versions
       }
       if (!isNaN(fromRev) && !isNaN(toRev)) {
         let foundOne = false;
