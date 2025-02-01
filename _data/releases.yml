@@ -4,6 +4,7 @@
 # The prereleases list should only be filled if there's an active prerelease.
 # Otherwise it should be empty.
 prereleases:
+  - 180.2
   - 180.1
 
 releases:
