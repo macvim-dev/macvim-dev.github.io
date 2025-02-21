@@ -1,4 +1,19 @@
 <style>
 :root { supported-color-schemes: light dark; color-scheme: light dark; }
-h1 { padding-bottom: .3em; border-bottom: 1px solid gray; }
+div h1 { padding-bottom: .3em; border-bottom: 1px solid gray; }
+
+/* Older versions' release notes. Will be optionally shown in collapsed form if the user has upgraded across multiple versions. */
+div > details.oldVersionToggle > summary  {
+  font-size: 1.2em;
+  border-radius: 5px;
+  border-bottom: 3px solid #57c4d0;
+  cursor: pointer;
+  padding: 10px;
+}
+.toc {
+  /* Sparkle does not seem to allow anchor links. Just disable the TOC. */
+  display: none;
+}
+div.sparkle-installed-version { display:none; }
+div.sparkle-installed-version ~ section { display: none; }
 </style>
