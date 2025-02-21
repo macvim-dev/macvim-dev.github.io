@@ -1,0 +1,158 @@
+<p>Updated to Vim 9.1.1128</p>
+
+<nav>
+<ul class="toc" id="markdown-toc">
+  <li><a href="#r181-defaults-change" id="markdown-toc-r181-defaults-change">Defaults Change</a></li>
+  <li><a href="#r181-features" id="markdown-toc-r181-features">Features</a>    <ul>
+      <li><a href="#r181-tabs" id="markdown-toc-r181-tabs">Tabs</a></li>
+      <li><a href="#r181-new-vim-features" id="markdown-toc-r181-new-vim-features">New Vim features</a></li>
+      <li><a href="#r181-misc-new-settings" id="markdown-toc-r181-misc-new-settings">Misc New Settings</a></li>
+    </ul>
+  </li>
+  <li><a href="#r181-general" id="markdown-toc-r181-general">General</a></li>
+  <li><a href="#r181-fixes" id="markdown-toc-r181-fixes">Fixes</a>    <ul>
+      <li><a href="#r181-apple-intelligence-writing-tools" id="markdown-toc-r181-apple-intelligence-writing-tools">Apple “Intelligence” Writing Tools</a></li>
+      <li><a href="#r181-window-resizing-and-full-screen" id="markdown-toc-r181-window-resizing-and-full-screen">Window resizing and full screen</a></li>
+      <li><a href="#r181-other-fixes" id="markdown-toc-r181-other-fixes">Other Fixes</a></li>
+    </ul>
+  </li>
+  <li><a href="#r181-scripting" id="markdown-toc-r181-scripting">Scripting</a></li>
+  <li><a href="#r181-compatibility" id="markdown-toc-r181-compatibility">Compatibility</a></li>
+</ul>
+
+</nav>
+
+<p>This update contains a completely new GUI tabs implementation by @sfsam! It also contains lots of small fixes for window resizing and full screen mode that aims to make using MacVim feel rock solid and stable.</p>
+
+<h1 id="r181-defaults-change">Defaults Change</h1>
+
+<p>New settings defaults related to window sizing <a href="https://github.com/macvim-dev/macvim/issues/1528">#1528</a>:</p>
+
+<ul>
+  <li>“Smoothly resizes window” is now on by default. MacVim’s window will now resize smoothly instead of snapped to the size of the character grid.</li>
+  <li>Vim’s <code>guioptions</code> now has <code>k</code> set by default (<a href="https://macvim.org/docs/redirect.html?tag='go-k'"><code>:h go-k</code></a>). This prevents MacVim’s window size from changing unnecessarily when showing/hiding tabs or changing font size.</li>
+</ul>
+
+<p>These should align MacVim better with how other apps work and integrate better with OS window management, including macOS 15 Sequoia’s window tiling feature.</p>
+
+<h1 id="r181-features">Features</h1>
+
+<h2 id="r181-tabs">Tabs</h2>
+
+<p>MacVim has a new tabs implementation! The old version (PSMTabBarControl) is not maintained and lacks features such as overflowing tabs and customizable colors. The new tabs will overflow horizontally and are scrollable. They also animate when tabs are closed or moved, respect system settings such as right-to-left locales and high-contrast modes, and are designed to fit within the currently selected Vim colors.</p>
+
+<p>There are a few ways to customize the colors of the new tabs, under the “Appearance” settings pane. MacVim defaults to an “Automatic colors” mode which tries to pick sensible colors automatically based on the current foreground/background colors. However, you can also configure it to simply use the tab colors specified by the Vim color scheme (some color schemes will work better than others depending on their choice of colors). Another new option is “Use tabs background color” which when combined with “Transparent title bar” allows the title bar and tabs to look like a single cohesive whole.</p>
+
+<p><img width="375" alt="new tabs" src="https://github.com/user-attachments/assets/f70a683e-1450-48d1-89b7-f6c12d73bf90" />
+<img width="375" alt="image" src="https://github.com/user-attachments/assets/b1af9c2f-8176-43d8-add7-faf6272f9a74" />
+<img width="375" alt="new tabs" src="https://github.com/user-attachments/assets/1190e1e4-2544-485c-adf5-86a57233f9a0" />
+<img width="375" alt="new tabs" src="https://github.com/user-attachments/assets/93bc52e6-3559-48fa-8a28-5848fd19b1d7" /></p>
+
+<p>Relevant work:</p>
+
+<ul>
+  <li><a href="https://github.com/macvim-dev/macvim/issues/1120">#1120</a> (by @sfsam)</li>
+  <li>Also: <a href="https://github.com/macvim-dev/macvim/issues/1535">#1535</a> / <a href="https://github.com/macvim-dev/macvim/issues/1536">#1536</a> / <a href="https://github.com/macvim-dev/macvim/issues/1537">#1537</a> / <a href="https://github.com/macvim-dev/macvim/issues/1538">#1538</a> / <a href="https://github.com/macvim-dev/macvim/issues/1539">#1539</a> / <a href="https://github.com/macvim-dev/macvim/issues/1557">#1557</a> / <a href="https://github.com/macvim-dev/macvim/issues/1558">#1558</a> / <a href="https://github.com/macvim-dev/macvim/issues/1560">#1560</a></li>
+</ul>
+
+<h2 id="r181-new-vim-features">New Vim features</h2>
+
+<ul>
+  <li>new bundled color scheme:
+    <ul>
+      <li>unokai (<a href="https://github.com/vim/vim/issues/16443">vim/vim#16443</a>)</li>
+    </ul>
+  </li>
+  <li>new bundled optional plugins (use <code>packadd</code> to enable them):
+    <ul>
+      <li>helptoc: Use <a href="https://macvim.org/docs/redirect.html?tag=:HelpToc"><code>:HelpToc</code></a> to show an interactive table of contents for Vim help, man pages, Markdown files, and terminal. <a href="https://github.com/vim/vim/issues/10446">vim/vim#10446</a></li>
+    </ul>
+  </li>
+  <li>new options:
+    <ul>
+      <li><code>set diffopt+=linematch:{n}</code>. Matches lines better when in diff mode. <a href="https://github.com/vim/vim/commit/7c7a4e6d1ad50d5b25b42aa2d5a33a8d04a4cc8a">v9.1.1009</a></li>
+      <li><code>findfunc</code>. Customizes <code>:find</code> and other commands. <a href="https://github.com/vim/vim/commit/a13f3a4f5de9c150f70298850e34747838904995">v9.1.0831</a></li>
+      <li><code>set completeopt+=preinsert</code>. Preview inserted text in completion. <a href="https://github.com/vim/vim/commit/edd4ac3e895ce16034c7e098f1d68e0155d97886">v9.1.1056</a></li>
+      <li><code>messagesopt</code>. Allows customizing hit-enter behavior. <a href="https://github.com/vim/vim/commit/51d4d84d6a7159c6ce9e04b36f8edc105ca3794b">v9.1.0908</a></li>
+    </ul>
+  </li>
+  <li>new functions:
+    <ul>
+      <li><code>getcellpixels()</code>. Query the pixel size of a character cell in the grid. <a href="https://github.com/vim/vim/commit/1083cae7091f006249c1349d0575412d2ff6a7dc">v9.1.0854</a> / <a href="https://github.com/macvim-dev/macvim/issues/1554">#1554</a> / <a href="https://github.com/macvim-dev/macvim/issues/1555">#1555</a></li>
+    </ul>
+  </li>
+  <li>Vim tutor has a new interactive plugin (<a href="https://macvim.org/docs/redirect.html?tag=:Tutor"><code>:h :Tutor</code></a>) (<a href="https://github.com/vim/vim/commit/a54816b884157f6b7973a188f85c708d15cbf72f">v9.1.0836</a>). There is also now a chapter 2 (<a href="https://github.com/vim/vim/issues/5729">vim/vim#5729</a>).</li>
+</ul>
+
+<h2 id="r181-misc-new-settings">Misc New Settings</h2>
+
+<ul>
+  <li>“Open untitled window” (General) has a new option to only open on MacVim re-activation. <a href="https://github.com/macvim-dev/macvim/issues/1509">#1509</a></li>
+  <li>“Show document icon at title bar” (Appearance). Previously MacVim implicitly hid the document icon when using transparent title bar. This is now customizable. <a href="https://github.com/macvim-dev/macvim/issues/1510">#1510</a></li>
+</ul>
+
+<h1 id="r181-general">General</h1>
+
+<ul>
+  <li>
+    <p>The MacVim dmg installer has a new design. Courtesy of @jasonlong. <a href="https://github.com/macvim-dev/macvim/issues/1540">#1540</a> <a href="https://github.com/macvim-dev/macvim/issues/1545">#1545</a></p>
+  </li>
+  <li>
+    <p>Legacy builds (macOS 10.9 - 10.12) are no longer built by GitHub hosted runners, due to GitHub’s deprecation of old runners. They are now built by a custom self-hosted VM instead. In the future we hope to set up reproducible builds (<a href="https://github.com/macvim-dev/macvim/issues/1506">#1506</a>) so it will not matter who’s building the app as it would be verifiable. <a href="https://github.com/macvim-dev/macvim/issues/1559">#1559</a></p>
+  </li>
+  <li>
+    <p>“Nightly” build: We now build a dmg installer for every commit. This allows for trying out the latest developmental version of MacVim, but note that the app will not be signed / notarized, and it will not be as polished as official release/pre-release builds. See <a href="https://github.com/macvim-dev/macvim/wiki/Installing">wiki</a> for instructions. <a href="https://github.com/macvim-dev/macvim/issues/1532">#1532</a></p>
+  </li>
+</ul>
+
+<h1 id="r181-fixes">Fixes</h1>
+
+<h2 id="r181-apple-intelligence-writing-tools">Apple “Intelligence” Writing Tools</h2>
+
+<p>macOS 15 Sequoia’s Apple “Intelligence” Writing Tools should work correctly with MacVim now. To use it, select some text, right click to show menu, and then select the “Writing Tools” sub-menu. As part of this fix, the integration with the “Services” menu now works more reliably as well. You can select texts in blockwise visual mode and select a service and MacVim will try to place the new texts back to the blockwise selection if possible. <a href="https://github.com/macvim-dev/macvim/issues/1552">#1552</a></p>
+
+<h2 id="r181-window-resizing-and-full-screen">Window resizing and full screen</h2>
+
+<ul>
+  <li>Flicker begone: Changing font size, showing/hiding tabs or scroll bars, or entering non-native full screen should no longer cause MacVim to flicker. Previously there could be a momentary but distracting/annoying stale image that flashes briefly. <a href="https://github.com/macvim-dev/macvim/issues/1547">#1547</a> <a href="https://github.com/macvim-dev/macvim/issues/1549">#1549</a></li>
+  <li>Fixed issue where resizing MacVim window would occasionally cause Vim to be stuck in a stale wrong size. <a href="https://github.com/macvim-dev/macvim/issues/1518">#1518</a></li>
+  <li>Non-native full screen now supports <code>blurradius</code> option. <a href="https://github.com/macvim-dev/macvim/issues/1546">#1546</a></li>
+  <li>Fixed window size not always restoring correctly when exiting full screen. Non-native full screen also works more reliably in multi-monitor setup. <a href="https://github.com/macvim-dev/macvim/issues/1525">#1525</a></li>
+  <li>Fixed non-native full screen mode when using an external monitor with a MacBook with a notch, and having the “Show menu bar in non-native mode” option set. Previously MacVim would sometimes miscalculate the menu bar height in the second screen. <a href="https://github.com/macvim-dev/macvim/issues/1548">#1548</a></li>
+  <li>Fixed misc issues with non-native full screen’s interaction with <code>fuoptions</code> and also the <code>transparency</code> setting, and rare crash. <a href="https://github.com/macvim-dev/macvim/issues/1521">#1521</a></li>
+</ul>
+
+<h2 id="r181-other-fixes">Other Fixes</h2>
+
+<ul>
+  <li>Fixed issue where changing font size (using Cmd =/-) with guifont set to “-monospace-“ would result in guifont being changed to a confusing name like “.AppleSystemUIFontMonospaced-Regular”. <a href="https://github.com/macvim-dev/macvim/issues/1544">#1544</a></li>
+  <li>“MacVim Website” menu item now goes to the updated URL. <a href="https://github.com/macvim-dev/macvim/issues/1524">#1524</a></li>
+  <li>What’s New page now allows changing font size (using Cmd =/-), and showing table of contents. <a href="https://github.com/macvim-dev/macvim/issues/1561">#1561</a> <a href="https://github.com/macvim-dev/macvim/issues/1562">#1562</a></li>
+  <li>Dark mode documentation is now a bit clearer on <code>v:os_appearance</code>. <a href="https://github.com/macvim-dev/macvim/issues/1511">#1511</a></li>
+  <li>Using dictionary look up on selected texts (by right clicking and then selecting “Look Up” in the pop-up menu) is now more resilient as it uses Vim’s native <code>getregion()</code> to determine the selected texts. <a href="https://github.com/macvim-dev/macvim/issues/1508">#1508</a></li>
+</ul>
+
+<h1 id="r181-scripting">Scripting</h1>
+
+<ul>
+  <li>Scripting languages versions:
+    <ul>
+      <li>Ruby is now built against 3.4, up from 3.3.</li>
+      <li>Perl is now built against 5.34, up from 5.30.</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="r181-compatibility">Compatibility</h1>
+
+<p>Requires macOS 10.9 or above. (10.9 - 10.12 requires downloading a separate legacy build)</p>
+
+<p>Script interfaces have compatibility with these versions:</p>
+
+<ul>
+  <li>Lua 5.4</li>
+  <li>Perl 5.34</li>
+  <li>Python2 2.7</li>
+  <li>Python3 3.9 or above</li>
+  <li>Ruby 3.4</li>
+</ul>
