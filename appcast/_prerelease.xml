@@ -3,7 +3,9 @@
       <title>MacVim prerelease-180.2</title>
       <description><![CDATA[
 {% include_relative _appcast_style.css %}
+<div>
 {% include releases/r180.2.html %}
+</div>
 <p><br /><small><a href="https://github.com/macvim-dev/macvim/releases/">Latest release notes &gt;</a></small></p>
       ]]></description>
       <sparkle:fullReleaseNotesLink>https://github.com/macvim-dev/macvim/releases</sparkle:fullReleaseNotesLink>

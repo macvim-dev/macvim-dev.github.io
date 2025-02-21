@@ -2,7 +2,9 @@
       <title>MacVim release-180</title>
       <description><![CDATA[
 {% include_relative _appcast_style.css %}
+<div>
 {% include releases/r180.html %}
+</div>
 <p><br /><small><a href="https://github.com/macvim-dev/macvim/releases/latest">Latest release notes &gt;</a></small></p>
       ]]></description>
       <sparkle:fullReleaseNotesLink>https://github.com/macvim-dev/macvim/releases</sparkle:fullReleaseNotesLink>
