@@ -1,12 +1,27 @@
 <p>Updated to Vim 9.1.0</p>
 
+<nav>
+<ul class="toc" id="markdown-toc">
+  <li><a href="#r179-features" id="markdown-toc-r179-features">Features</a>    <ul>
+      <li><a href="#r179-system-monospace-font-sf-mono" id="markdown-toc-r179-system-monospace-font-sf-mono">System monospace font (SF Mono)</a></li>
+      <li><a href="#r179-new-vim-features" id="markdown-toc-r179-new-vim-features">New Vim features</a></li>
+      <li><a href="#r179-misc" id="markdown-toc-r179-misc">Misc</a></li>
+    </ul>
+  </li>
+  <li><a href="#r179-general" id="markdown-toc-r179-general">General</a></li>
+  <li><a href="#r179-fixes" id="markdown-toc-r179-fixes">Fixes</a></li>
+  <li><a href="#r179-compatibility" id="markdown-toc-r179-compatibility">Compatibility</a></li>
+</ul>
+
+</nav>
+
 <p>Happy New Year! See <a href="https://github.com/macvim-dev/macvim/discussions/1472">#1472</a> for a retrospective of 2023 and future roadmap.</p>
 
 <p>Also, Vim 9.1 is now released! See <a href="https://www.vim.org/vim-9.1-released.php">announcement</a>.</p>
 
-<h1 id="features">Features</h1>
+<h1 id="r179-features">Features</h1>
 
-<h2 id="system-monospace-font-sf-mono">System monospace font (SF Mono)</h2>
+<h2 id="r179-system-monospace-font-sf-mono">System monospace font (SF Mono)</h2>
 
 <p>MacVim’s <code>guifont</code> option now supports a new <code>-monospace-</code> value, which instructs it to use the system monospace font, which is SF Mono in recent macOS versions. As mentioned below (New Vim features), you can now use tab-completion to see the available values in cmdline. See <a href="https://macvim.org/docs/redirect.html?tag=macvim-guifont"><code>:h macvim-guifont</code></a> for more details on how to use it (including using different font weights). <a href="https://github.com/macvim-dev/macvim/issues/1463">#1463</a></p>
 
@@ -14,7 +29,7 @@
 
 <p><img width="310" alt="Menlo (default) vs SF Mono" src="https://github.com/macvim-dev/macvim/assets/1217449/56e4a7b7-9f9d-4cfa-9e6a-bb4baffc6d30" /></p>
 
-<h2 id="new-vim-features">New Vim features</h2>
+<h2 id="r179-new-vim-features">New Vim features</h2>
 
 <ul>
   <li>Command-line tab completion improvements and bug fixes (see <a href="https://macvim.org/docs/redirect.html?tag=cmdline-completion"><code>:h cmdline-completion</code></a> and <a href="https://macvim.org/docs/redirect.html?tag=complete-set-option"><code>:h complete-set-option</code></a>)
@@ -41,7 +56,7 @@
   <li>Miscellaneous security fixes.</li>
 </ul>
 
-<h2 id="misc">Misc</h2>
+<h2 id="r179-misc">Misc</h2>
 
 <p>New settings:</p>
 
@@ -56,7 +71,7 @@
   <li>MacVim can be launched without loading user defaults for a clean experience via a command-line flag. See <a href="https://macvim.org/docs/redirect.html?tag=macvim-settings"><code>:h macvim-settings</code></a>.</li>
 </ul>
 
-<h1 id="general">General</h1>
+<h1 id="r179-general">General</h1>
 
 <ul>
   <li>Sparkle (updater for MacVim) is now updated to 2.5.2. The updater can now show multiple release notes when updating MacVim across multiple versions. <a href="https://github.com/macvim-dev/macvim/issues/1446">#1446</a> <a href="https://github.com/macvim-dev/macvim/issues/1469">#1469</a></li>
@@ -70,14 +85,14 @@
   <li>Python 2 support: The default location for locating the Python 2 lib in the binary release is now under /Library/Frameworks rather than /usr/local. Note: Python 2 has long been obsolete. If you rely on Python 2 plugins, consider this a warning as it’s only supported as long as it’s feasible and could be removed in the future. <a href="https://github.com/macvim-dev/macvim/issues/1434">#1434</a></li>
 </ul>
 
-<h1 id="fixes">Fixes</h1>
+<h1 id="r179-fixes">Fixes</h1>
 
 <ul>
   <li>Fixed non-native full screen mode when using a MacBook with a notch and having the “Show menu bar in non-native mode” option set. Changing the screen resolution while using non-native full screen also works properly now. <a href="https://github.com/macvim-dev/macvim/issues/1450">#1450</a></li>
   <li>Fixed Help menu’s documentation search not working with tags with special characters like <code>&lt;Down&gt;</code>. <a href="https://github.com/macvim-dev/macvim/issues/1455">#1455</a></li>
 </ul>
 
-<h1 id="compatibility">Compatibility</h1>
+<h1 id="r179-compatibility">Compatibility</h1>
 
 <p>Requires macOS 10.9 or above. (10.9 - 10.12 requires downloading a separate legacy build)</p>
 

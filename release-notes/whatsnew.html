@@ -14,6 +14,7 @@
 
     Use ?from=<rev_exclusive>&to=<rev_inclusive> to list a range of releases.
     Use ?version=<rev> to list a single release from its revision number.
+    Use ?all to just show all of them.
     -->
 
     <style>
@@ -71,9 +72,101 @@
       display: block;
     }
 
+    /* TOC */
+    html {
+        scroll-behavior: smooth;
+    }
+    .toc {
+        display: none;
+        border-left: 1px solid darkgray;
+    }
+    .toc a {
+        color: inherit;
+        text-decoration: none;
+    }
+    .toc a:hover {
+        color: #599A42;
+        text-decoration: underline;
+    }
+    @media (prefers-color-scheme: dark) {
+      .toc {
+        border-left: 1px solid dimgray;
+      }
+      .toc a:hover {
+          color: rgb(48,209,88);
+      }
+    }
+    #hidetoc-btn {
+        display: none;
+    }
+    #hidetoc-toggle {
+        display: none;
+    }
+    @media (min-width:50em) {
+        section {
+            width: 72%;
+        }
+        .toc {
+            display: inherit;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 24%;
+            max-height: 100%;
+            overflow: auto;
+            padding-left: 1em;
+            margin-left: 1em;
+
+            line-height: 150%;
+            font-size:110%;
+
+            transition: 0.3s;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 1em;
+        }
+        .toc li {
+            list-style-type: none;
+        }
+
+        #hidetoc-toggle:checked ~ section {
+            width: 95%;
+        }
+        #hidetoc-toggle:checked ~ * .toc {
+            right: -28%;
+            border: none;
+        }
+        #hidetoc-btn {
+            display: inherit;
+            position: fixed;
+            right: 1.5em;
+            z-index: 1;
+            opacity: 0.2;
+        }
+        #hidetoc-btn:hover {
+            opacity: 1.0;
+        }
+        #hidetoc-btn > svg {
+            transition: 0.3s;
+        }
+        #hidetoc-toggle:checked ~ nav > #hidetoc-btn > svg {
+            transform: rotate(180deg);
+        }
+    }
     </style>
   </head>
   <body>
+      <!-- show/hide TOC control -->
+      <input type="checkbox" id="hidetoc-toggle" />
+      <nav>
+        <label for="hidetoc-toggle" id="hidetoc-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+          </svg>
+        </label>
+      </nav>
+
     {% for release in site.data.releases.prereleases %}
       <section id={{ release }}>
         <header> <h1>MacVim r{{ release }} (prerelease)</h1></header>
@@ -104,9 +197,15 @@
     <script>
       const params = new URLSearchParams(document.location.search);
 
+      let tocs = [];
+
       let fromRev = NaN;
       let toRev = NaN;
-      if (params.has('from') && params.has('to')) {
+      if (params.has('all')) {
+          fromRev = -Infinity;
+          toRev = Infinity;
+      }
+      else if (params.has('from') && params.has('to')) {
         fromRev = parseFloat(params.get('from'));
         toRev = parseFloat(params.get('to'));
       }
@@ -125,12 +224,30 @@
             else {
               sections[i].style.display = 'block';
               foundOne = true;
+
+              let toc = sections[i].querySelector('.toc');
+              if (toc)
+                tocs.push({elem: toc, sectionId: sections[i].id});
             }
           }
         }
         if (!foundOne) {
           document.getElementsByClassName('item-0')[0].style.display = 'block'; // Just show the latest if the input range is not valid so we don't show an empty page
         }
+      }
+      // We have multiple TOCs. We patch it by making a new master list and put every TOC under it.
+      if (tocs.length > 1) {
+          let parentNode = tocs[0].elem.parentNode;
+          let newToc = document.createElement('ul');
+          newToc.className = 'toc';
+          for (var i = 0; i < tocs.length; i++) {
+              tocs[i].elem.className = '';
+              let newTocItem = document.createElement('li');
+              newTocItem.innerHTML = `<a href=#${tocs[i].sectionId}>r${tocs[i].sectionId}</a>`;
+              newTocItem.appendChild(tocs[i].elem);
+              newToc.appendChild(newTocItem);
+          }
+          parentNode.appendChild(newToc);
       }
     </script>
   </body>
