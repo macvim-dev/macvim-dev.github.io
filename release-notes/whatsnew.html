@@ -7,6 +7,13 @@
     <meta name="description" content="List of recent MacVim release notes to show what's new.">
     <title>What's New in MacVim</title>
 
+    <link rel="shortcut icon" href="../images/favicon-macvim-16.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="../images/favicon-macvim-256.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="../images/favicon-macvim-128.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="../images/favicon-macvim-64.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-macvim-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-macvim-16.png">
+
     <!--
     This page serves as a list of recent release notes. By default all but the
     latest release is hidden but the caller can use URL parameters to enable
@@ -38,6 +45,8 @@
     body {
       font-family: -apple-system-font, -apple-system, sans-serif;
       font: -apple-system-body !important;
+
+      margin-top: 0px; /* we use flex box for the h1 and need this to avoid adding too much padding */
     }
 
     hr {
@@ -46,13 +55,24 @@
 
     section > header {
       font-size: 130%;
-      color: #599A42;
       border-bottom: 3px solid #57c4d0;
+
+      display: flex; /* use flex to show a date on the right */
+      align-items: baseline;
+    }
+    section > header > h1 {
+      color: #599A42;
+      flex-grow: 1;
+      margin-top: 0.67em;
     }
     @media (prefers-color-scheme: dark) {
-      section > header {
+      section > header > h1 {
         color: rgb(48,209,88);
       }
+    }
+    section > header > time {
+        font-size: 65%;
+        opacity: 0.5;
     }
 
     section > h1 {
@@ -140,6 +160,7 @@
         #hidetoc-btn {
             display: inherit;
             position: fixed;
+            top: 1em;
             right: 1.5em;
             z-index: 1;
             opacity: 0.2;
@@ -168,9 +189,9 @@
       </nav>
 
     {% for release in site.data.releases.prereleases %}
-      <section id={{ release }}>
-        <header> <h1>MacVim r{{ release }} (prerelease)</h1></header>
-        {% include releases/r{{ release }}.html %}
+      <section id={{ release.num }}>
+        <header> <h1>MacVim r{{ release.num }} (prerelease)</h1><time datetime={{ release.date }}></time></header>
+        {% include releases/r{{ release.num }}.html %}
       </section>
     {% endfor %}
 
@@ -185,9 +206,9 @@
         {% break %}
       {% endif %}
 
-      <section id={{ release }} class=item-{{ forloop.index0 }}>
-        <header> <h1>MacVim r{{ release }}</h1></header>
-        {% include releases/r{{ release }}.html %}
+      <section id={{ release.num }} class=item-{{ forloop.index0 }}>
+        <header> <h1>MacVim r{{ release.num }}</h1><time datetime={{ release.date }}></time></header>
+        {% include releases/r{{ release.num }}.html %}
       </section>
 
     {% endfor %}
@@ -235,6 +256,14 @@
           document.getElementsByClassName('item-0')[0].style.display = 'block'; // Just show the latest if the input range is not valid so we don't show an empty page
         }
       }
+
+      // Convert to local time zone and date display
+      let dateTimeElems = document.getElementsByTagName('time');
+      for (let elem of dateTimeElems) {
+          if (elem.dateTime)
+              elem.innerText = (new Date(elem.dateTime)).toLocaleDateString();
+      }
+
       // We have multiple TOCs. We patch it by making a new master list and put every TOC under it.
       if (tocs.length > 1) {
           let parentNode = tocs[0].elem.parentNode;
