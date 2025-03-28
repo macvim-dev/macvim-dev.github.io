@@ -4,6 +4,8 @@
 # The prereleases list should only be filled if there's an active prerelease.
 # Otherwise it should be empty.
 prereleases:
+  - num: 181.1
+    date: "2025-03-28T10:27:13Z"
 
 releases:
   - num: 181
