@@ -4,12 +4,10 @@
 # The prereleases list should only be filled if there's an active prerelease.
 # Otherwise it should be empty.
 prereleases:
-  - num: 181.2
-    date: "2025-07-23T02:57:51Z"
-  - num: 181.1
-    date: "2025-03-28T10:27:13Z"
 
 releases:
+  - num: 182
+    date: "2025-10-30T09:59:10Z"
   - num: 181
     date: "2025-02-21T05:06:34Z"
   - num: 180

@@ -1,0 +1,117 @@
+<p>Updated to Vim 9.1.1887</p>
+
+<nav>
+<ul class="toc" id="markdown-toc">
+  <li><a href="#r182-announcements" id="markdown-toc-r182-announcements">Announcements</a>    <ul>
+      <li><a href="#r182-moving-macos-1013---1015-support-to-legacy-release" id="markdown-toc-r182-moving-macos-1013---1015-support-to-legacy-release">Moving macOS 10.13 - 10.15 support to legacy release</a></li>
+    </ul>
+  </li>
+  <li><a href="#r182-features" id="markdown-toc-r182-features">Features</a>    <ul>
+      <li><a href="#r182-better-mouse-support" id="markdown-toc-r182-better-mouse-support">Better mouse support</a></li>
+    </ul>
+  </li>
+  <li><a href="#r182-new-vim-features" id="markdown-toc-r182-new-vim-features">New Vim Features</a></li>
+  <li><a href="#r182-general" id="markdown-toc-r182-general">General</a></li>
+  <li><a href="#r182-security-fixes" id="markdown-toc-r182-security-fixes">Security Fixes</a></li>
+  <li><a href="#r182-fixes" id="markdown-toc-r182-fixes">Fixes</a></li>
+  <li><a href="#r182-compatibility" id="markdown-toc-r182-compatibility">Compatibility</a></li>
+</ul>
+
+</nav>
+
+<p>This update is still built against macOS 15 Sequoia, and does not contain any specific fixes or improvements for macOS 26 Tahoe. That will come in a future update.</p>
+
+<h1 id="r182-announcements">Announcements</h1>
+
+<h2 id="r182-moving-macos-1013---1015-support-to-legacy-release">Moving macOS 10.13 - 10.15 support to legacy release</h2>
+
+<p>Currently, MacVim binary releases are available in two versions: a normal version (macOS 10.13 or above), and a legacy version (macOS 10.9-10.12). Starting next release (r183), the normal version will require macOS 11 or above (due to Xcode 26 requirements), and macOS 10.13-10.15 users will need to use the legacy version instead. This will mostly be a transparent change, and the updater will automatically update to the right version. The legacy version should be almost identical to said users as they are using older versions of macOS that can’t make use of newer OS features to begin with.</p>
+
+<p>In the future we may remove support for macOS 10.9-10.12 but for now they are still supported.</p>
+
+<h1 id="r182-features">Features</h1>
+
+<h2 id="r182-better-mouse-support">Better mouse support</h2>
+
+<ul>
+  <li>Scroll wheels should feel much better to use in MacVim. A small scroll is now guaranteed to scroll at least one line, and shift-scrolling (horizontal scroll) works correctly now. You can now also turn off macOS’s scroll wheel acceleration to scroll a fixed amount of lines in the “Input” settings pane. <a href="https://github.com/macvim-dev/macvim/issues/1566">#1566</a></li>
+  <li>Mouse buttons 4 and 5 can now be bound to <code>&lt;X1Mouse&gt;</code> and <code>&lt;X2Mouse&gt;</code> in Vim mappings (<a href="https://macvim.org/docs/redirect.html?tag=X1Mouse"><code>:h X1Mouse</code></a>). <a href="https://github.com/macvim-dev/macvim/issues/1534">#1534</a></li>
+</ul>
+
+<h1 id="r182-new-vim-features">New Vim Features</h1>
+
+<ul>
+  <li>Diff mode improvements
+    <ul>
+      <li>
+        <p>Vim diff can now highlight per-character or per-word differences within a line. Per-character highlighting is now used by default. See <a href="https://macvim.org/docs/redirect.html?tag='diffopt'"><code>:h 'diffopt'</code></a> under “inline”. <a href="https://github.com/vim/vim/commit/9943d4790e42721a6777da9e12637aa595ba4965">v9.1.1243</a></p>
+
+        <p><img width="830" height="100" alt="image" src="https://github.com/user-attachments/assets/4c66551e-06bb-4e90-9269-0c54b46e1932" /></p>
+      </li>
+      <li>
+        <p>Diff anchors allow for more explicit controls over how and where the diff algorithm aligns text across files (<a href="https://macvim.org/docs/redirect.html?tag=diff-anchors"><code>:h diff-anchors</code></a>). <a href="https://github.com/vim/vim/commit/0d9160e11ce4b921adff1e5621dd989ce96fb0f3">v9.1.1557</a></p>
+      </li>
+    </ul>
+  </li>
+  <li>Lots of auto-completion improvements. Some highlights below:
+    <ul>
+      <li>New option: <code>autocomplete</code>. Get completion suggestions as you type. See <a href="https://macvim.org/docs/redirect.html?tag=ins-autocompletion"><code>:h ins-autocompletion</code></a>. <a href="https://github.com/vim/vim/commit/af9a7a04f18693eee4400dd134135527f4e8cd5f">v9.1.1590</a></li>
+      <li>Fuzzy matching now uses the fzf algorithm. <a href="https://github.com/vim/vim/commit/7e0df5eee9eab872261fd5eb0068cec967a2ba77">v9.1.1627</a></li>
+      <li>Popup menu borders can now be styled (<a href="https://macvim.org/docs/redirect.html?tag='pumborder'"><code>:h 'pumborder'</code></a> / <a href="https://macvim.org/docs/redirect.html?tag='completepopup'"><code>:h 'completepopup'</code></a>). <a href="https://github.com/vim/vim/commit/474b981e40ce211dc3498186ba78ec8461efb9c1">v9.1.1835</a> / <a href="https://github.com/vim/vim/commit/1a09f11f5d96f169d40eb74c260a8520efd10558">v9.1.1856</a></li>
+      <li>Can now specify a custom completion source when using insert-mode completion (<a href="https://macvim.org/docs/redirect.html?tag='complete'"><code>:h 'complete'</code></a>). <a href="https://github.com/vim/vim/commit/cbe53191d01926c045a39198b3a9517e3c5077d2">v9.1.1301</a></li>
+      <li><code>set completeopt+=nearest</code> will sort completion items by proximity to the cursor. <a href="https://github.com/vim/vim/commit/b156588eb707a084bbff8685953a8892e1e45bca">v9.1.1308</a></li>
+      <li>Command-line completion
+        <ul>
+          <li>Search commands like <code>/</code> and <code>:g</code> can be tab-completed now. <a href="https://github.com/vim/vim/commit/6b49fba8c8b97b178ddf81a9ca0c6f36c66f942f">v9.1.1490</a> <a href="https://github.com/vim/vim/commit/93c2d5bf7f01db594a3f5ebecbd5a31dfd411544">v9.1.1526</a></li>
+          <li>Commands like <code>:filetype</code> and <code>:highlight</code> have better auto-completion. <a href="https://github.com/vim/vim/commit/a3422aa3170d49a7c3d1e6cd4242b86e42ef3945">v9.1.1340</a> / <a href="https://github.com/vim/vim/commit/a7b8120820dc5257c76dc6086c077fa86189f4ee">v9.1.1138</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>New vertical tab panel (<a href="https://macvim.org/docs/redirect.html?tag=tabpanel"><code>:h tabpanel</code></a>). <a href="https://github.com/vim/vim/commit/be5bd4d6292fddcc103091407792730aaa48cc48">v9.1.1391</a></li>
+  <li>new bundled optional plugins (use <code>packadd</code> to enable them):
+    <ul>
+      <li>hlyank (<a href="https://macvim.org/docs/redirect.html?tag=package-hlyank"><code>:h package-hlyank</code></a>): Briefly highlight region of last yank command</li>
+    </ul>
+  </li>
+  <li>new commands:
+    <ul>
+      <li><code>:uniq</code> (<a href="https://macvim.org/docs/redirect.html?tag=:uniq"><code>:h :uniq</code></a>): Remove duplicate adjacent lines <a href="https://github.com/vim/vim/commit/74f0a77bb9a170a25b03cacf640aa4e1b1d222b2">v9.1.1477</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="r182-general">General</h1>
+
+<ul>
+  <li>Sparkle (updater for MacVim) is now updated to 2.8.0. <a href="https://github.com/macvim-dev/macvim/issues/1605">#1605</a></li>
+</ul>
+
+<h1 id="r182-security-fixes">Security Fixes</h1>
+
+<ul>
+  <li>Fixed MacVim erroneously setting the get-task-allow entitlement, which could allow another user-installed application to inspect it (CVE-2025-8597) <a href="https://github.com/macvim-dev/macvim/issues/1585">#1585</a></li>
+</ul>
+
+<h1 id="r182-fixes">Fixes</h1>
+
+<ul>
+  <li>Fixed issue where macOS services (available in the “Services” menu) could not insert text when not in visual mode. <a href="https://github.com/macvim-dev/macvim/issues/1571">#1571</a> <a href="https://github.com/macvim-dev/macvim/issues/1569">#1569</a></li>
+  <li>Fixed issue where guifont did not accept PostScript names with underscores (e.g. “CascadiaMono-Regular_Light”). <a href="https://github.com/macvim-dev/macvim/issues/1600">#1600</a></li>
+  <li>MacVim now uses the standard <code>v:colornames</code> variable for choosing highlight colors. <a href="https://github.com/macvim-dev/macvim/issues/1568">#1568</a></li>
+  <li>Vim syntax now understands MacVim-specific function <code>showdefinition()</code>. <a href="https://github.com/macvim-dev/macvim/issues/1601">#1601</a></li>
+</ul>
+
+<h1 id="r182-compatibility">Compatibility</h1>
+
+<p>Requires macOS 10.9 or above. (10.9 - 10.12 requires downloading a separate legacy build)</p>
+
+<p>Script interfaces have compatibility with these versions:</p>
+
+<ul>
+  <li>Lua 5.4</li>
+  <li>Perl 5.34</li>
+  <li>Python2 2.7</li>
+  <li>Python3 3.9 or above</li>
+  <li>Ruby 3.4</li>
+</ul>
