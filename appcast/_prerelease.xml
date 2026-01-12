@@ -1,0 +1,29 @@
+    <item>
+      <sparkle:channel>prerelease</sparkle:channel>
+      <title>MacVim prerelease-182.1</title>
+      <description><![CDATA[
+{% include_relative _appcast_style.css %}
+<div>
+{% include releases/r182.1.html %}
+</div>
+
+<p><br /><small><a href="https://github.com/macvim-dev/macvim/releases/">Latest release notes &gt;</a></small></p>
+      ]]></description>
+      <sparkle:fullReleaseNotesLink>https://github.com/macvim-dev/macvim/releases</sparkle:fullReleaseNotesLink>
+      <pubDate>Mon, 12 Jan 2026 02:00:00 +0000</pubDate>
+      <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+      <sparkle:version>182.1</sparkle:version>
+      <sparkle:shortVersionString>9.1.2068</sparkle:shortVersionString>
+      <enclosure type="application/octet-stream"
+        url="https://github.com/macvim-dev/macvim/releases/download/prerelease-182.1/MacVim.dmg"
+        sparkle:edSignature="kDzX+L0ivwoak5HjfxClv/lsDNVcg1ZA50iycUuYgnseMoGAqhHd27Q/0lpOIVktMHqyBEPON78hPq74BmZsCQ==" length="25383709"
+        />
+      <sparkle:deltas>
+        <enclosure type="application/octet-stream"
+          url="https://github.com/macvim-dev/macvim/releases/download/prerelease-182.1/182_to_182.1.delta"
+          sparkle:deltaFrom="182"
+          sparkle:edSignature="kmzhtpVQF017Md0inHX+lYzoLhwRm1sa+OFvwKMVZJiOs+nbsJ29csCIHVOazZltJx7GlBXKL7wCslcVsejHAQ==" length="2000950"
+          />
+      </sparkle:deltas>
+
+    </item>
