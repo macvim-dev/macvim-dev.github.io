@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"> 
+  <channel>
+    <title>MacVim</title>
+    <link>https://macvim.org/appcast/latest.xml</link>
+    <description>MacVim</description>
+{% include_relative _prerelease.xml %}
+{% include_relative _release.xml %}
+{% include_relative _release_legacy.xml %}
+  </channel>
+</rss>
