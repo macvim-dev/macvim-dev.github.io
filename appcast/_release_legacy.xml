@@ -1,20 +1,20 @@
     <item>
-      <title>MacVim release-182</title>
+      <title>MacVim release-183</title>
       <description><![CDATA[
 {% include_relative _appcast_style.css %}
 <div>
-{% include releases/r182.html %}
+{% include releases/r183.html %}
 </div>
 <p><br /><small><a href="https://github.com/macvim-dev/macvim/releases/latest">Latest release notes &gt;</a></small></p>
       ]]></description>
       <sparkle:fullReleaseNotesLink>https://github.com/macvim-dev/macvim/releases</sparkle:fullReleaseNotesLink>
-      <pubDate>Thu, 30 Oct 2025 09:00:00 +0000</pubDate>
+      <pubDate>Wed, 08 Apr 2026 06:00:00 +0000</pubDate>
       <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
       <sparkle:maximumSystemVersion>10.12.99</sparkle:maximumSystemVersion>
-      <sparkle:version>182</sparkle:version>
-      <sparkle:shortVersionString>9.1.1887</sparkle:shortVersionString>
+      <sparkle:version>183</sparkle:version>
+      <sparkle:shortVersionString>9.2.321</sparkle:shortVersionString>
       <enclosure type="application/octet-stream"
-        url="https://github.com/macvim-dev/macvim/releases/download/release-182/MacVim_10.9.dmg"
-        sparkle:edSignature="8B7Z3TMzEDj+/HPjuOyeB3TWeC3f6qkvOtcbnsfc7XUNg6VXN3J1iBtL+AKVbM35Y3PmVym7w7vyPJuME1VoAw==" length="26203008"
+        url="https://github.com/macvim-dev/macvim/releases/download/release-183/MacVim_10.9.dmg"
+        sparkle:edSignature="MCaVKgBF943BBLJxi7eQOL+XDVnus0ykbW2HFkT26Ikrof7paqfdYBL6c8DrKRH+xtYNM51QYEw7aRIP3oeeDg==" length="26764318"
         />
     </item>

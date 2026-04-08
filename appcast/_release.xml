@@ -1,43 +1,38 @@
     <item>
-      <title>MacVim release-182</title>
+      <title>MacVim release-183</title>
       <description><![CDATA[
 {% include_relative _appcast_style.css %}
 <div>
-{% include releases/r182.html %}
+{% include releases/r183.html %}
 </div>
-<div data-sparkle-version=181>
+<div data-sparkle-version=182>
 <details class=oldVersionToggle>
-<summary>r181</summary>
-{% include releases/r181.html %}
+<summary>r182</summary>
+{% include releases/r182.html %}
 </details>
 </div>
 
 <p><br /><small><a href="https://github.com/macvim-dev/macvim/releases/latest">Latest release notes &gt;</a></small></p>
       ]]></description>
       <sparkle:fullReleaseNotesLink>https://github.com/macvim-dev/macvim/releases</sparkle:fullReleaseNotesLink>
-      <pubDate>Thu, 30 Oct 2025 09:00:00 +0000</pubDate>
+      <pubDate>Wed, 08 Apr 2026 06:00:00 +0000</pubDate>
       <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
-      <sparkle:version>182</sparkle:version>
-      <sparkle:shortVersionString>9.1.1887</sparkle:shortVersionString>
+      <sparkle:version>183</sparkle:version>
+      <sparkle:shortVersionString>9.2.321</sparkle:shortVersionString>
       <enclosure type="application/octet-stream"
-        url="https://github.com/macvim-dev/macvim/releases/download/release-182/MacVim.dmg"
-        sparkle:edSignature="v5yoG7NK2cOABlE36oBxhWgHvTFhsrYstBfHjK0YntnNn8LHajQ+dLQa4i57dqvE9/J/kKs34rVTeaShNW0PCw==" length="23814063"
+        url="https://github.com/macvim-dev/macvim/releases/download/release-183/MacVim.dmg"
+        sparkle:edSignature="77SDKRs5K9Kd7aQBdVymzWOv3C/0MCndmUbJ/Xc18lKN9UVbeCL//QjeXNRqsftQET7E2EuErkl0xBC7AisCBw==" length="25939870"
         />
       <sparkle:deltas>
         <enclosure type="application/octet-stream"
-          url="https://github.com/macvim-dev/macvim/releases/download/release-182/180_to_182.delta"
-          sparkle:deltaFrom="180"
-          sparkle:edSignature="dM42uqE8tLRJkHrFE7RC4hZ/SR5Xb7iJmJEKR+hq65zjKZg2M+ARhAakt2TzTtFFKRt+LOLFohBmJQLAL23nCg==" length="5122338"
+          url="https://github.com/macvim-dev/macvim/releases/download/release-183/182_to_183.delta"
+          sparkle:deltaFrom="182"
+          sparkle:edSignature="N3fB8mWxmv1GGvV+GC0A9tO70PbPfnnbylDn0cPNzVm0FDwgByF0roTcnfRZqTxRk/IweQ5Ki0iERMsrSecXCQ==" length="3765350"
           />
         <enclosure type="application/octet-stream"
-          url="https://github.com/macvim-dev/macvim/releases/download/release-182/181_to_182.delta"
-          sparkle:deltaFrom="181"
-          sparkle:edSignature="w7X53sSNF6RGYNwd2//1EiNSAgrjBduXZxpUlhJUwx8S13mPXxTf13NL4K1SuoPNT5bVsooFKR+OkoQiAJCPAw==" length="4195814"
-          />
-        <enclosure type="application/octet-stream"
-          url="https://github.com/macvim-dev/macvim/releases/download/release-182/181.2_to_182.delta"
-          sparkle:deltaFrom="181.2"
-          sparkle:edSignature="2aeoBURjcJxg8Ua3j7Pyl8TByi3klHd45nGmW1DfLNEyxPCe6PPSGB68aJfw1ZQ0l3xvPksGA5lL2/dRCCRUBg==" length="1668062"
+          url="https://github.com/macvim-dev/macvim/releases/download/release-183/182.1_to_183.delta"
+          sparkle:deltaFrom="182.1"
+          sparkle:edSignature="FoPC03A/ms1U3Y8C4zIvSlePLjWDc98QighwZjpUQEC8TcHpxbUQatTWJSuyH/to/9u7S4zLfg+XP7zfd+9sDA==" length="2818262"
           />
       </sparkle:deltas>
 

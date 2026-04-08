@@ -1,0 +1,64 @@
+<p>Updated to Vim 9.2.0321</p>
+
+<nav>
+<ul class="toc" id="markdown-toc">
+  <li><a href="#r183-security-fixes" id="markdown-toc-r183-security-fixes">Security Fixes</a></li>
+  <li><a href="#r183-general" id="markdown-toc-r183-general">General</a></li>
+  <li><a href="#r183-fixes" id="markdown-toc-r183-fixes">Fixes</a></li>
+  <li><a href="#r183-scripting" id="markdown-toc-r183-scripting">Scripting</a></li>
+  <li><a href="#r183-compatibility" id="markdown-toc-r183-compatibility">Compatibility</a></li>
+</ul>
+
+</nav>
+
+<p>Vim 9.2 was released in February 2026! See <a href="https://www.vim.org/vim-9.2-released.php">announcement</a>. This update syncs up to Vim 9.2, which also contains important security fixes.</p>
+
+<p>This release note does not come with the normal “New Vim Features” section. The next MacVim release will cover both releases to highlight new Vim features.</p>
+
+<h1 id="r183-security-fixes">Security Fixes</h1>
+
+<p>There were numerous security fixes in Vim itself between the last release (9.1.1887) and 9.2.0321. Below are some some high severity ones that were fixed in the latest release:</p>
+
+<ul>
+  <li><a href="https://github.com/vim/vim/security/advisories/GHSA-g77q-xrww-p834">CVE-2025-66476</a></li>
+  <li><a href="https://github.com/vim/vim/security/advisories/GHSA-2gmj-rpqf-pxvh">CVE-2026-34714</a></li>
+  <li><a href="https://github.com/vim/vim/security/advisories/GHSA-8h6p-m6gr-mpw9">CVE-2026-34982</a></li>
+</ul>
+
+<h1 id="r183-general">General</h1>
+
+<ul>
+  <li>Sparkle (updater for MacVim) is now updated to 2.9.1. The updater will now also verify that the update feed is cryptographically signed. <a href="https://github.com/macvim-dev/macvim/issues/1637">#1637</a> <a href="https://github.com/macvim-dev/macvim/issues/1638">#1638</a></li>
+  <li>Binary release is now built using GNU iconv instead of the system built-in iconv. This slightly increases binary size, but makes MacVim work more consistently when dealing with non-Unicode files (e.g. JIS). <a href="https://github.com/macvim-dev/macvim/issues/1626">#1626</a></li>
+</ul>
+
+<h1 id="r183-fixes">Fixes</h1>
+
+<ul>
+  <li>What’s New page will no longer leave behind unnecessary persistent files in ~/Library <a href="https://github.com/macvim-dev/macvim/issues/1619">#1619</a></li>
+</ul>
+
+<h1 id="r183-scripting">Scripting</h1>
+
+<ul>
+  <li>Scripting languages versions:
+    <ul>
+      <li>Ruby is now built against 4.0, up from 3.4.</li>
+      <li>Lua is now built against 5.5, up from 5.4.</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="r183-compatibility">Compatibility</h1>
+
+<p>Requires macOS 10.9 or above. (10.9 - 10.12 requires downloading a separate legacy build)</p>
+
+<p>Script interfaces have compatibility with these versions:</p>
+
+<ul>
+  <li>Lua 5.5</li>
+  <li>Perl 5.34</li>
+  <li>Python2 2.7</li>
+  <li>Python3 3.9 or above</li>
+  <li>Ruby 4.0</li>
+</ul>
